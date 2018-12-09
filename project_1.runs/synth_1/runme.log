@@ -1,0 +1,512 @@
+
+*** Running vivado
+    with args -log main_project_top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source main_project_top.tcl
+
+
+****** Vivado v2018.2.2 (64-bit)
+  **** SW Build 2348494 on Mon Oct  1 18:25:39 MDT 2018
+  **** IP Build 2318053 on Mon Oct  1 21:44:26 MDT 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source main_project_top.tcl -notrace
+Command: synth_design -top main_project_top -part xc7z020clg484-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 10748 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1345.965 ; gain = 83.898 ; free physical = 2403 ; free virtual = 7414
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'main_project_top' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/new/main_project_top.vhd:41]
+INFO: [Synth 8-3491] module 'clk_wiz_0' declared at '/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.runs/synth_1/.Xil/Vivado-10734-saba-VirtualBox/realtime/clk_wiz_0_stub.vhdl:5' bound to instance 'clock_inst' of component 'clk_wiz_0' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/new/main_project_top.vhd:186]
+INFO: [Synth 8-638] synthesizing module 'clk_wiz_0' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.runs/synth_1/.Xil/Vivado-10734-saba-VirtualBox/realtime/clk_wiz_0_stub.vhdl:15]
+INFO: [Synth 8-3491] module 'blk_mem_gen_0' declared at '/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.runs/synth_1/.Xil/Vivado-10734-saba-VirtualBox/realtime/blk_mem_gen_0_stub.vhdl:5' bound to instance 'memory_block_cam_1' of component 'blk_mem_gen_0' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/new/main_project_top.vhd:199]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_0' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.runs/synth_1/.Xil/Vivado-10734-saba-VirtualBox/realtime/blk_mem_gen_0_stub.vhdl:18]
+INFO: [Synth 8-3491] module 'blk_mem_gen_1' declared at '/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.runs/synth_1/.Xil/Vivado-10734-saba-VirtualBox/realtime/blk_mem_gen_1_stub.vhdl:5' bound to instance 'memory_block_cam_2' of component 'blk_mem_gen_1' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/new/main_project_top.vhd:211]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_1' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.runs/synth_1/.Xil/Vivado-10734-saba-VirtualBox/realtime/blk_mem_gen_1_stub.vhdl:18]
+WARNING: [Synth 8-5640] Port 'clkout' is missing in component declaration [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/new/main_project_top.vhd:109]
+INFO: [Synth 8-3491] module 'VGA' declared at '/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/FN0FBA2ILV7T649.vhd:114' bound to instance 'Inst_VGA' of component 'VGA' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/new/main_project_top.vhd:236]
+INFO: [Synth 8-638] synthesizing module 'VGA' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/FN0FBA2ILV7T649.vhd:124]
+WARNING: [Synth 8-3848] Net clkout in module/entity VGA does not have driver. [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/FN0FBA2ILV7T649.vhd:116]
+INFO: [Synth 8-256] done synthesizing module 'VGA' (1#1) [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/FN0FBA2ILV7T649.vhd:124]
+	Parameter MEM_ADDR_SIZE bound to: 17 - type: integer 
+INFO: [Synth 8-3491] module 'Address_Generator' declared at '/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/new/address_generator.vhd:8' bound to instance 'Inst_Address_Generator' of component 'Address_Generator' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/new/main_project_top.vhd:243]
+INFO: [Synth 8-638] synthesizing module 'Address_Generator' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/new/address_generator.vhd:15]
+	Parameter MEM_ADDR_SIZE bound to: 17 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'Address_Generator' (2#1) [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/new/address_generator.vhd:15]
+	Parameter MEM_ADDR_SIZE bound to: 17 - type: integer 
+INFO: [Synth 8-3491] module 'ov7670_top' declared at '/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/FZTEBUMILV7T646.vhd:7' bound to instance 'cam1' of component 'ov7670_top' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/new/main_project_top.vhd:252]
+INFO: [Synth 8-638] synthesizing module 'ov7670_top' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/FZTEBUMILV7T646.vhd:34]
+	Parameter MEM_ADDR_SIZE bound to: 17 - type: integer 
+INFO: [Synth 8-3491] module 'debounce' declared at '/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/F5IR32HILV7T64J.vhd:5' bound to instance 'btn_debounce' of component 'debounce' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/FZTEBUMILV7T646.vhd:88]
+INFO: [Synth 8-638] synthesizing module 'debounce' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/F5IR32HILV7T64J.vhd:11]
+INFO: [Synth 8-256] done synthesizing module 'debounce' (3#1) [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/F5IR32HILV7T64J.vhd:11]
+	Parameter MEM_ADDR_SIZE bound to: 17 - type: integer 
+INFO: [Synth 8-3491] module 'ov7670_capture' declared at '/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/F6SJNRTILV7T642.vhd:5' bound to instance 'capture' of component 'ov7670_capture' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/FZTEBUMILV7T646.vhd:99]
+INFO: [Synth 8-638] synthesizing module 'ov7670_capture' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/F6SJNRTILV7T642.vhd:16]
+	Parameter MEM_ADDR_SIZE bound to: 17 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'ov7670_capture' (4#1) [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/F6SJNRTILV7T642.vhd:16]
+INFO: [Synth 8-3491] module 'ov7670_controller' declared at '/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/F0UU05JILV7T644.vhd:11' bound to instance 'controller' of component 'ov7670_controller' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/FZTEBUMILV7T646.vhd:111]
+INFO: [Synth 8-638] synthesizing module 'ov7670_controller' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/F0UU05JILV7T644.vhd:23]
+INFO: [Synth 8-3491] module 'i2c_sender' declared at '/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/FQTSFQ5ILV7T63Z.vhd:11' bound to instance 'Inst_i2c_sender' of component 'i2c_sender' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/F0UU05JILV7T644.vhd:58]
+INFO: [Synth 8-638] synthesizing module 'i2c_sender' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/FQTSFQ5ILV7T63Z.vhd:22]
+INFO: [Synth 8-256] done synthesizing module 'i2c_sender' (5#1) [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/FQTSFQ5ILV7T63Z.vhd:22]
+INFO: [Synth 8-3491] module 'ov7670_registers' declared at '/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/FNTSDZZILV7T645.vhd:12' bound to instance 'Inst_ov7670_registers' of component 'ov7670_registers' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/F0UU05JILV7T644.vhd:73]
+INFO: [Synth 8-638] synthesizing module 'ov7670_registers' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/FNTSDZZILV7T645.vhd:20]
+INFO: [Synth 8-256] done synthesizing module 'ov7670_registers' (6#1) [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/FNTSDZZILV7T645.vhd:20]
+INFO: [Synth 8-256] done synthesizing module 'ov7670_controller' (7#1) [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/F0UU05JILV7T644.vhd:23]
+INFO: [Synth 8-256] done synthesizing module 'ov7670_top' (8#1) [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/FZTEBUMILV7T646.vhd:34]
+	Parameter MEM_ADDR_SIZE bound to: 17 - type: integer 
+INFO: [Synth 8-3491] module 'ov7670_top' declared at '/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/FZTEBUMILV7T646.vhd:7' bound to instance 'cam2' of component 'ov7670_top' [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/new/main_project_top.vhd:275]
+INFO: [Synth 8-256] done synthesizing module 'main_project_top' (9#1) [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/new/main_project_top.vhd:41]
+WARNING: [Synth 8-3331] design ov7670_top has unconnected port clk100
+WARNING: [Synth 8-3331] design ov7670_top has unconnected port clk25
+WARNING: [Synth 8-3331] design VGA has unconnected port clkout
+WARNING: [Synth 8-3331] design main_project_top has unconnected port LED[7]
+WARNING: [Synth 8-3331] design main_project_top has unconnected port LED[6]
+WARNING: [Synth 8-3331] design main_project_top has unconnected port LED[5]
+WARNING: [Synth 8-3331] design main_project_top has unconnected port LED[4]
+WARNING: [Synth 8-3331] design main_project_top has unconnected port LED[3]
+WARNING: [Synth 8-3331] design main_project_top has unconnected port LED[2]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 1390.590 ; gain = 128.523 ; free physical = 2414 ; free virtual = 7426
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1390.590 ; gain = 128.523 ; free physical = 2413 ; free virtual = 7425
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1390.590 ; gain = 128.523 ; free physical = 2413 ; free virtual = 7425
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1/blk_mem_gen_0_in_context.xdc] for cell 'memory_block_cam_2'
+Finished Parsing XDC File [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1/blk_mem_gen_0_in_context.xdc] for cell 'memory_block_cam_2'
+Parsing XDC File [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'memory_block_cam_1'
+Finished Parsing XDC File [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'memory_block_cam_1'
+Parsing XDC File [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'clock_inst'
+Finished Parsing XDC File [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'clock_inst'
+Parsing XDC File [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/constrs_1/imports/Downloads/F5QMAYQILV7T6TF.xdc]
+WARNING: [Vivado 12-507] No nets matched 'OV7670_PCLK_1_IBUF'. [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/constrs_1/imports/Downloads/F5QMAYQILV7T6TF.xdc:116]
+WARNING: [Vivado 12-507] No nets matched 'OV7670_PCLK_2_IBUF'. [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/constrs_1/imports/Downloads/F5QMAYQILV7T6TF.xdc:117]
+Finished Parsing XDC File [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/constrs_1/imports/Downloads/F5QMAYQILV7T6TF.xdc]
+WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/constrs_1/imports/Downloads/F5QMAYQILV7T6TF.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/main_project_top_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/constrs_1/imports/Downloads/F5QMAYQILV7T6TF.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/main_project_top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/main_project_top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.runs/synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1745.543 ; gain = 0.000 ; free physical = 2124 ; free virtual = 7136
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:20 ; elapsed = 00:00:46 . Memory (MB): peak = 1745.543 ; gain = 483.477 ; free physical = 2203 ; free virtual = 7215
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:20 ; elapsed = 00:00:46 . Memory (MB): peak = 1745.543 ; gain = 483.477 ; free physical = 2203 ; free virtual = 7215
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for GCLK_100. (constraint file  /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 5).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for GCLK_100. (constraint file  /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 6).
+Applied set_property DONT_TOUCH = true for memory_block_cam_2. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for memory_block_cam_1. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for clock_inst. (constraint file  auto generated constraint, line ).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:20 ; elapsed = 00:00:46 . Memory (MB): peak = 1745.543 ; gain = 483.477 ; free physical = 2205 ; free virtual = 7217
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5546] ROM "o" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-802] inferred FSM for state register 'counter_reg' in module 'ov7670_capture'
+INFO: [Synth 8-5544] ROM "counter" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "taken" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "data_sr" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "divider" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "finished" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5587] ROM size for "sreg" is below threshold of ROM address width. It will be mapped to LUTs
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE0 |                               00 |                               00
+                 iSTATE1 |                               01 |                               01
+                 iSTATE2 |                               10 |                               10
+                  iSTATE |                               11 |                               11
+*
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'counter_reg' using encoding 'sequential' in module 'ov7670_capture'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:47 . Memory (MB): peak = 1745.543 ; gain = 483.477 ; free physical = 2196 ; free virtual = 7209
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     10 Bit       Adders := 2     
+	   2 Input      8 Bit       Adders := 6     
+	   2 Input      5 Bit       Adders := 1     
+	   3 Input      4 Bit       Adders := 8     
++---Registers : 
+	               32 Bit    Registers := 4     
+	               19 Bit    Registers := 2     
+	               18 Bit    Registers := 2     
+	               16 Bit    Registers := 4     
+	               12 Bit    Registers := 2     
+	               10 Bit    Registers := 2     
+	                8 Bit    Registers := 4     
+	                4 Bit    Registers := 5     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 17    
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input     16 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 4     
+	   2 Input      4 Bit        Muxes := 14    
+	   4 Input      2 Bit        Muxes := 2     
+	   7 Input      2 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 14    
+	   3 Input      1 Bit        Muxes := 2     
+	   4 Input      1 Bit        Muxes := 6     
+	  11 Input      1 Bit        Muxes := 2     
+	  10 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module main_project_top 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      5 Bit       Adders := 1     
+	   3 Input      4 Bit       Adders := 8     
++---Registers : 
+	                4 Bit    Registers := 5     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input      4 Bit        Muxes := 14    
+	   2 Input      1 Bit        Muxes := 3     
+	  11 Input      1 Bit        Muxes := 2     
+	  10 Input      1 Bit        Muxes := 1     
+Module VGA 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     10 Bit       Adders := 2     
++---Registers : 
+	               10 Bit    Registers := 2     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 1     
+Module debounce 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 1     
+Module ov7670_capture 
+Detailed RTL Component Info : 
++---Registers : 
+	               19 Bit    Registers := 1     
+	               18 Bit    Registers := 1     
+	               16 Bit    Registers := 1     
+	               12 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   4 Input      2 Bit        Muxes := 1     
+Module i2c_sender 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 2     
++---Registers : 
+	               32 Bit    Registers := 2     
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 2     
+	   7 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+	   3 Input      1 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 3     
+Module ov7670_registers 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
+	                8 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module ov7670_controller 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+INFO: [Synth 8-5546] ROM "cam1/btn_debounce/o" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "cam1/controller/Inst_i2c_sender/divider" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "cam1/controller/Inst_i2c_sender/taken" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "cam1/controller/Inst_ov7670_registers/finished" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "cam2/btn_debounce/o" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "cam2/controller/Inst_i2c_sender/divider" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "cam2/controller/Inst_i2c_sender/taken" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "cam2/controller/Inst_ov7670_registers/finished" won't be mapped to RAM because it is too sparse
+WARNING: [Synth 8-3917] design main_project_top has port OV7670_RESET_1 driven by constant 1
+WARNING: [Synth 8-3917] design main_project_top has port OV7670_PWDN_1 driven by constant 0
+WARNING: [Synth 8-3917] design main_project_top has port OV7670_RESET_2 driven by constant 1
+WARNING: [Synth 8-3917] design main_project_top has port OV7670_PWDN_2 driven by constant 0
+WARNING: [Synth 8-3331] design main_project_top has unconnected port LED[7]
+WARNING: [Synth 8-3331] design main_project_top has unconnected port LED[6]
+WARNING: [Synth 8-3331] design main_project_top has unconnected port LED[5]
+WARNING: [Synth 8-3331] design main_project_top has unconnected port LED[4]
+WARNING: [Synth 8-3331] design main_project_top has unconnected port LED[3]
+WARNING: [Synth 8-3331] design main_project_top has unconnected port LED[2]
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\cam2/controller/Inst_i2c_sender/data_sr_reg[0] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\cam1/controller/Inst_i2c_sender/data_sr_reg[0] )
+WARNING: [Synth 8-3332] Sequential element (cam1/capture/address_reg[18]) is unused and will be removed from module main_project_top.
+WARNING: [Synth 8-3332] Sequential element (cam1/capture/d_latch_reg[11]) is unused and will be removed from module main_project_top.
+WARNING: [Synth 8-3332] Sequential element (cam1/controller/Inst_i2c_sender/data_sr_reg[0]) is unused and will be removed from module main_project_top.
+WARNING: [Synth 8-3332] Sequential element (cam2/capture/address_reg[18]) is unused and will be removed from module main_project_top.
+WARNING: [Synth 8-3332] Sequential element (cam2/capture/d_latch_reg[11]) is unused and will be removed from module main_project_top.
+WARNING: [Synth 8-3332] Sequential element (cam2/controller/Inst_i2c_sender/data_sr_reg[0]) is unused and will be removed from module main_project_top.
+INFO: [Synth 8-3886] merging instance 'cam1/btn_debounce/o_reg' (FDS) to 'cam2/btn_debounce/o_reg'
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:50 . Memory (MB): peak = 1745.543 ; gain = 483.477 ; free physical = 2177 ; free virtual = 7192
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+ROM:
++-----------------+--------------------------------------------+---------------+----------------+
+|Module Name      | RTL Object                                 | Depth x Width | Implemented As | 
++-----------------+--------------------------------------------+---------------+----------------+
+|main_project_top | cam1/controller/Inst_ov7670_registers/sreg | 32x16         | LUT            | 
+|main_project_top | cam2/controller/Inst_ov7670_registers/sreg | 32x16         | LUT            | 
++-----------------+--------------------------------------------+---------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5578] Moved timing constraint from pin 'clock_inst/clk_out1' to pin 'clock_inst/bbstub_clk_out1/O'
+INFO: [Synth 8-5578] Moved timing constraint from pin 'clock_inst/clk_out2' to pin 'clock_inst/bbstub_clk_out2/O'
+INFO: [Synth 8-5578] Moved timing constraint from pin 'clock_inst/clk_out3' to pin 'clock_inst/bbstub_clk_out3/O'
+INFO: [Synth 8-5819] Moved 3 constraints on hierarchical pins to their respective driving/loading pins
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:32 ; elapsed = 00:01:04 . Memory (MB): peak = 1745.543 ; gain = 483.477 ; free physical = 2050 ; free virtual = 7064
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:33 ; elapsed = 00:01:05 . Memory (MB): peak = 1745.543 ; gain = 483.477 ; free physical = 2043 ; free virtual = 7057
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:33 ; elapsed = 00:01:05 . Memory (MB): peak = 1745.543 ; gain = 483.477 ; free physical = 2041 ; free virtual = 7056
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:34 ; elapsed = 00:01:06 . Memory (MB): peak = 1745.543 ; gain = 483.477 ; free physical = 2041 ; free virtual = 7056
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:34 ; elapsed = 00:01:06 . Memory (MB): peak = 1745.543 ; gain = 483.477 ; free physical = 2041 ; free virtual = 7056
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:34 ; elapsed = 00:01:06 . Memory (MB): peak = 1745.543 ; gain = 483.477 ; free physical = 2041 ; free virtual = 7056
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:34 ; elapsed = 00:01:06 . Memory (MB): peak = 1745.543 ; gain = 483.477 ; free physical = 2041 ; free virtual = 7056
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:34 ; elapsed = 00:01:06 . Memory (MB): peak = 1745.543 ; gain = 483.477 ; free physical = 2041 ; free virtual = 7056
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:34 ; elapsed = 00:01:06 . Memory (MB): peak = 1745.543 ; gain = 483.477 ; free physical = 2041 ; free virtual = 7056
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |clk_wiz_0     |         1|
+|2     |blk_mem_gen_0 |         1|
+|3     |blk_mem_gen_1 |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+---------------------+------+
+|      |Cell                 |Count |
++------+---------------------+------+
+|1     |blk_mem_gen_0_bbox_1 |     1|
+|2     |blk_mem_gen_1_bbox_2 |     1|
+|3     |clk_wiz_0_bbox_0     |     1|
+|4     |BUFG                 |     2|
+|5     |CARRY4               |    56|
+|6     |LUT1                 |    44|
+|7     |LUT2                 |   149|
+|8     |LUT3                 |    83|
+|9     |LUT4                 |    75|
+|10    |LUT5                 |    87|
+|11    |LUT6                 |   111|
+|12    |MUXF7                |     1|
+|13    |FDRE                 |   362|
+|14    |FDSE                 |    96|
+|15    |IBUF                 |    31|
+|16    |OBUF                 |    24|
+|17    |OBUFT                |     8|
++------+---------------------+------+
+
+Report Instance Areas: 
++------+----------------------------+--------------------+------+
+|      |Instance                    |Module              |Cells |
++------+----------------------------+--------------------+------+
+|1     |top                         |                    |  1156|
+|2     |  Inst_Address_Generator    |Address_Generator   |    33|
+|3     |  Inst_VGA                  |VGA                 |   110|
+|4     |  cam1                      |ov7670_top          |   340|
+|5     |    btn_debounce            |debounce_1          |    37|
+|6     |    capture                 |ov7670_capture_2    |    99|
+|7     |    controller              |ov7670_controller_3 |   204|
+|8     |      Inst_i2c_sender       |i2c_sender_4        |   146|
+|9     |      Inst_ov7670_registers |ov7670_registers_5  |    56|
+|10    |  cam2                      |ov7670_top_0        |   304|
+|11    |    btn_debounce            |debounce            |     1|
+|12    |    capture                 |ov7670_capture      |    99|
+|13    |    controller              |ov7670_controller   |   204|
+|14    |      Inst_i2c_sender       |i2c_sender          |   146|
+|15    |      Inst_ov7670_registers |ov7670_registers    |    56|
++------+----------------------------+--------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:34 ; elapsed = 00:01:06 . Memory (MB): peak = 1745.543 ; gain = 483.477 ; free physical = 2041 ; free virtual = 7056
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 16 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:20 ; elapsed = 00:00:29 . Memory (MB): peak = 1745.543 ; gain = 128.523 ; free physical = 2099 ; free virtual = 7113
+Synthesis Optimization Complete : Time (s): cpu = 00:00:34 ; elapsed = 00:01:06 . Memory (MB): peak = 1745.551 ; gain = 483.477 ; free physical = 2104 ; free virtual = 7119
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 88 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+69 Infos, 30 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:36 ; elapsed = 00:01:08 . Memory (MB): peak = 1745.551 ; gain = 495.039 ; free physical = 2094 ; free virtual = 7108
+WARNING: [Constraints 18-5210] No constraint will be written out.
+INFO: [Common 17-1381] The checkpoint '/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.runs/synth_1/main_project_top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file main_project_top_utilization_synth.rpt -pb main_project_top_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00.11 ; elapsed = 00:00:00.16 . Memory (MB): peak = 1769.555 ; gain = 0.000 ; free physical = 2093 ; free virtual = 7108
+INFO: [Common 17-206] Exiting Vivado at Fri Dec  7 06:20:16 2018...

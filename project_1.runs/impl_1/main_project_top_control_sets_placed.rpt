@@ -1,0 +1,100 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.2.2 (lin64) Build 2348494 Mon Oct  1 18:25:39 MDT 2018
+| Date         : Fri Dec  7 06:22:32 2018
+| Host         : saba-VirtualBox running 64-bit Ubuntu 18.04.1 LTS
+| Command      : report_control_sets -verbose -file main_project_top_control_sets_placed.rpt
+| Design       : main_project_top
+| Device       : xc7z020
+---------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    33 |
+| Unused register locations in slices containing registers |    68 |
++----------------------------------------------------------+-------+
+
+
+2. Histogram
+------------
+
++--------+--------------+
+| Fanout | Control Sets |
++--------+--------------+
+|      2 |            2 |
+|      6 |            1 |
+|      8 |            4 |
+|    16+ |           26 |
++--------+--------------+
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              84 |           27 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |             152 |           21 |
+| Yes          | No                    | No                     |             344 |           71 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |             400 |           49 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++---------------------------+-------------------------------------------------------+-----------------------------------------------------------+------------------+----------------+
+|        Clock Signal       |                     Enable Signal                     |                      Set/Reset Signal                     | Slice Load Count | Bel Load Count |
++---------------------------+-------------------------------------------------------+-----------------------------------------------------------+------------------+----------------+
+|  clock_inst/inst/clk_out2 |                                                       | cam1/controller/Inst_i2c_sender/sioc_i_1_n_0              |                1 |              2 |
+|  clock_inst/inst/clk_out2 |                                                       | cam2/controller/Inst_i2c_sender/sioc_i_1__0_n_0           |                1 |              2 |
+|  clock_inst/inst/clk_out3 |                                                       |                                                           |                1 |              6 |
+|  OV7670_PCLK_2_IBUF_BUFG  |                                                       | OV7670_VSYNC_2_IBUF                                       |                2 |              8 |
+|  clock_inst/inst/clk_out2 | Inst_VGA/E[0]                                         |                                                           |                3 |              8 |
+|  OV7670_PCLK_1_IBUF_BUFG  |                                                       | OV7670_VSYNC_1_IBUF                                       |                2 |              8 |
+|  clock_inst/inst/clk_out2 | Inst_VGA/gray_scale_cam_1_reg[0][0]                   |                                                           |                2 |              8 |
+|  clock_inst/inst/clk_out2 | cam2/controller/Inst_i2c_sender/E[0]                  | cam2/btn_debounce/SR[0]                                   |                2 |             16 |
+|  clock_inst/inst/clk_out2 | cam2/controller/Inst_i2c_sender/divider[7]_i_1__0_n_0 |                                                           |                3 |             16 |
+|  clock_inst/inst/clk_out2 | cam1/controller/Inst_i2c_sender/E[0]                  | cam2/btn_debounce/SR[0]                                   |                2 |             16 |
+|  clock_inst/inst/clk_out2 | cam1/controller/Inst_i2c_sender/divider[7]_i_1_n_0    |                                                           |                4 |             16 |
+|  clock_inst/inst/clk_out3 | Inst_VGA/eqOp                                         | Inst_VGA/Vcnt                                             |                4 |             20 |
+|  clock_inst/inst/clk_out3 |                                                       | Inst_VGA/eqOp                                             |                4 |             20 |
+|  clock_inst/inst/clk_out2 | cam2/controller/Inst_i2c_sender/busy_sr[0]_i_1__0_n_0 | cam2/controller/Inst_i2c_sender/data_sr[30]_i_1__0_n_0    |                4 |             22 |
+|  clock_inst/inst/clk_out2 | cam1/controller/Inst_i2c_sender/busy_sr0              | cam1/controller/Inst_i2c_sender/data_sr[30]_i_1_n_0       |                3 |             22 |
+|  clock_inst/inst/clk_out2 | vga_red[3]_i_1_n_0                                    |                                                           |                9 |             24 |
+|  clock_inst/inst/clk_out2 |                                                       | cam2/controller/Inst_ov7670_registers/sreg[15]_i_1__0_n_0 |                3 |             32 |
+|  clock_inst/inst/clk_out2 |                                                       | cam1/controller/Inst_ov7670_registers/sreg[15]_i_1_n_0    |                2 |             32 |
+|  OV7670_PCLK_1_IBUF_BUFG  | cam1/capture/we_reg_i_1_n_0                           |                                                           |                8 |             32 |
+|  OV7670_PCLK_2_IBUF_BUFG  | cam2/capture/we_reg_i_1__0_n_0                        |                                                           |               10 |             32 |
+|  clock_inst/inst/clk_out3 | Inst_Address_Generator/val                            | Inst_VGA/clear                                            |                5 |             36 |
+|  OV7670_PCLK_1_IBUF_BUFG  | cam1/capture/we_reg__0                                | OV7670_VSYNC_1_IBUF                                       |                4 |             36 |
+|  OV7670_PCLK_1_IBUF_BUFG  | cam1/capture/address_next                             | OV7670_VSYNC_1_IBUF                                       |                5 |             36 |
+|  OV7670_PCLK_2_IBUF_BUFG  | cam2/capture/we_reg__0                                | OV7670_VSYNC_2_IBUF                                       |                5 |             36 |
+|  OV7670_PCLK_2_IBUF_BUFG  | cam2/capture/address_next                             | OV7670_VSYNC_2_IBUF                                       |                5 |             36 |
+|  clock_inst/inst/clk_out2 | cam2/controller/Inst_i2c_sender/busy_sr[0]_i_1__0_n_0 |                                                           |                4 |             42 |
+|  clock_inst/inst/clk_out2 | cam1/controller/Inst_i2c_sender/busy_sr0              |                                                           |                4 |             42 |
+|  clock_inst/inst/clk_out2 |                                                       | cam1/btn_debounce/c[0]_i_1_n_0                            |                6 |             48 |
+|  clock_inst/inst/clk_out2 | cam2/controller/Inst_i2c_sender/busy_sr[0]_i_1__0_n_0 | cam2/controller/Inst_i2c_sender/busy_sr[31]_i_1__0_n_0    |                5 |             62 |
+|  clock_inst/inst/clk_out2 | cam1/controller/Inst_i2c_sender/busy_sr0              | cam1/controller/Inst_i2c_sender/busy_sr[31]_i_1_n_0       |                5 |             62 |
+|  OV7670_PCLK_1_IBUF_BUFG  | cam1/capture/addr[17]_i_1_n_0                         |                                                           |               11 |             62 |
+|  OV7670_PCLK_2_IBUF_BUFG  | cam2/capture/addr[17]_i_1__0_n_0                      |                                                           |               13 |             62 |
+|  clock_inst/inst/clk_out2 |                                                       |                                                           |               26 |             78 |
++---------------------------+-------------------------------------------------------+-----------------------------------------------------------+------------------+----------------+
+
+
