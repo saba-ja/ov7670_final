@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2.2 (lin64) Build 2348494 Mon Oct  1 18:25:39 MDT 2018
-| Date         : Fri Dec  7 06:20:16 2018
+| Date         : Mon Dec 10 03:45:28 2018
 | Host         : saba-VirtualBox running 64-bit Ubuntu 18.04.1 LTS
 | Command      : report_utilization -file main_project_top_utilization_synth.rpt -pb main_project_top_utilization_synth.pb
 | Design       : main_project_top
@@ -27,18 +27,20 @@ Table of Contents
 1. Slice Logic
 --------------
 
-+-------------------------+------+-------+-----------+-------+
-|        Site Type        | Used | Fixed | Available | Util% |
-+-------------------------+------+-------+-----------+-------+
-| Slice LUTs*             |  406 |     0 |     53200 |  0.76 |
-|   LUT as Logic          |  406 |     0 |     53200 |  0.76 |
-|   LUT as Memory         |    0 |     0 |     17400 |  0.00 |
-| Slice Registers         |  458 |     0 |    106400 |  0.43 |
-|   Register as Flip Flop |  458 |     0 |    106400 |  0.43 |
-|   Register as Latch     |    0 |     0 |    106400 |  0.00 |
-| F7 Muxes                |    1 |     0 |     26600 | <0.01 |
-| F8 Muxes                |    0 |     0 |     13300 |  0.00 |
-+-------------------------+------+-------+-----------+-------+
++----------------------------+------+-------+-----------+-------+
+|          Site Type         | Used | Fixed | Available | Util% |
++----------------------------+------+-------+-----------+-------+
+| Slice LUTs*                | 1760 |     0 |     53200 |  3.31 |
+|   LUT as Logic             | 1280 |     0 |     53200 |  2.41 |
+|   LUT as Memory            |  480 |     0 |     17400 |  2.76 |
+|     LUT as Distributed RAM |    0 |     0 |           |       |
+|     LUT as Shift Register  |  480 |     0 |           |       |
+| Slice Registers            |  663 |     0 |    106400 |  0.62 |
+|   Register as Flip Flop    |  663 |     0 |    106400 |  0.62 |
+|   Register as Latch        |    0 |     0 |    106400 |  0.00 |
+| F7 Muxes                   |    1 |     0 |     26600 | <0.01 |
+| F8 Muxes                   |    0 |     0 |     13300 |  0.00 |
++----------------------------+------+-------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
 
 
@@ -56,8 +58,8 @@ Table of Contents
 | 0     |          Yes |           - |            - |
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
-| 96    |          Yes |         Set |            - |
-| 362   |          Yes |       Reset |            - |
+| 41    |          Yes |         Set |            - |
+| 622   |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -146,15 +148,16 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| FDRE     |  362 |        Flop & Latch |
-| LUT2     |  149 |                 LUT |
-| LUT6     |  111 |                 LUT |
-| FDSE     |   96 |        Flop & Latch |
-| LUT5     |   87 |                 LUT |
-| LUT3     |   83 |                 LUT |
-| LUT4     |   75 |                 LUT |
-| CARRY4   |   56 |          CarryLogic |
-| LUT1     |   44 |                 LUT |
+| FDRE     |  622 |        Flop & Latch |
+| SRLC32E  |  480 |  Distributed Memory |
+| LUT6     |  374 |                 LUT |
+| LUT2     |  324 |                 LUT |
+| LUT3     |  300 |                 LUT |
+| LUT4     |  280 |                 LUT |
+| LUT5     |  246 |                 LUT |
+| CARRY4   |  204 |          CarryLogic |
+| LUT1     |  131 |                 LUT |
+| FDSE     |   41 |        Flop & Latch |
 | IBUF     |   31 |                  IO |
 | OBUF     |   24 |                  IO |
 | OBUFT    |    8 |                  IO |

@@ -25,35 +25,35 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.cache/wt [current_project]
-set_property parent.project_path /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.xpr [current_project]
+set_property webtalk.parent_dir /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.cache/wt [current_project]
+set_property parent.project_path /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.xpr [current_project]
 set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language VHDL [current_project]
 set_property board_part em.avnet.com:zed:part0:1.4 [current_project]
-set_property ip_output_repo /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.cache/ip [current_project]
+set_property ip_output_repo /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 read_vhdl -library xil_defaultlib {
-  /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/F0UU05JILV7T644.vhd
-  /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/F5IR32HILV7T64J.vhd
-  /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/F6SJNRTILV7T642.vhd
-  /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/FN0FBA2ILV7T649.vhd
-  /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/FNTSDZZILV7T645.vhd
-  /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/FQTSFQ5ILV7T63Z.vhd
-  /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/imports/Downloads/FZTEBUMILV7T646.vhd
-  /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/new/address_generator.vhd
-  /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/new/main_project_top.vhd
+  /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.srcs/sources_1/imports/Downloads/F0UU05JILV7T644.vhd
+  /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.srcs/sources_1/imports/Downloads/F5IR32HILV7T64J.vhd
+  /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.srcs/sources_1/imports/Downloads/F6SJNRTILV7T642.vhd
+  /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.srcs/sources_1/imports/Downloads/FN0FBA2ILV7T649.vhd
+  /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.srcs/sources_1/imports/Downloads/FNTSDZZILV7T645.vhd
+  /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.srcs/sources_1/imports/Downloads/FQTSFQ5ILV7T63Z.vhd
+  /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.srcs/sources_1/imports/Downloads/FZTEBUMILV7T646.vhd
+  /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.srcs/sources_1/new/address_generator.vhd
+  /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.srcs/sources_1/new/main_project_top.vhd
 }
-read_ip -quiet /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1.xci
-set_property used_in_implementation false [get_files -all /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1_ooc.xdc]
+read_ip -quiet /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.srcs/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1.xci
+set_property used_in_implementation false [get_files -all /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.srcs/sources_1/ip/blk_mem_gen_1/blk_mem_gen_1_ooc.xdc]
 
-read_ip -quiet /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
-set_property used_in_implementation false [get_files -all /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_ooc.xdc]
+read_ip -quiet /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
+set_property used_in_implementation false [get_files -all /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_ooc.xdc]
 
-read_ip -quiet /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
-set_property used_in_implementation false [get_files -all /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
-set_property used_in_implementation false [get_files -all /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
-set_property used_in_implementation false [get_files -all /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
+read_ip -quiet /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+set_property used_in_implementation false [get_files -all /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
+set_property used_in_implementation false [get_files -all /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
+set_property used_in_implementation false [get_files -all /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
 
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -63,15 +63,15 @@ set_property used_in_implementation false [get_files -all /home/saba/Documents/w
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/constrs_1/imports/Downloads/F5QMAYQILV7T6TF.xdc
-set_property used_in_implementation false [get_files /home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/constrs_1/imports/Downloads/F5QMAYQILV7T6TF.xdc]
+read_xdc /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.srcs/constrs_1/imports/Downloads/F5QMAYQILV7T6TF.xdc
+set_property used_in_implementation false [get_files /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.srcs/constrs_1/imports/Downloads/F5QMAYQILV7T6TF.xdc]
 
 read_xdc dont_touch.xdc
 set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 0
 close [open __synthesis_is_running__ w]
 
-synth_design -top main_project_top -part xc7z020clg484-1
+synth_design -top main_project_top -part xc7z020clg484-1 -flatten_hierarchy none -resource_sharing off -control_set_opt_threshold 0
 
 
 # disable binary constraint mode for synth run checkpoints

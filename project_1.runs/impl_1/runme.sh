@@ -20,7 +20,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.runs/impl_1'
+HD_PWD='/home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

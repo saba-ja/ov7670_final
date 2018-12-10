@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1544192333">
+<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1544441971">
   <File Type="VDS-TIMING-PB" Name="main_project_top_timing_summary_synth.pb"/>
   <File Type="VDS-TIMINGSUMMARY" Name="main_project_top_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="main_project_top.dcp"/>
@@ -115,7 +115,11 @@
   </FileSet>
   <Strategy Version="1" Minor="2">
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018"/>
-    <Step Id="synth_design"/>
+    <Step Id="synth_design">
+      <Option Id="ControlSetOptThreshold">0</Option>
+      <Option Id="FlattenHierarchy">1</Option>
+      <Option Id="ResourceSharing">2</Option>
+    </Step>
   </Strategy>
   <BlockFileSet Type="BlockSrcs" Name="clk_wiz_0"/>
 </GenRun>

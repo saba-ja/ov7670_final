@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:/home/saba/Documents/workstation4_image_processing/project_3/project_3/project_1.srcs/constrs_1/imports/Downloads/F5QMAYQILV7T6TF.xdc rfile:../../../project_1.srcs/constrs_1/imports/Downloads/F5QMAYQILV7T6TF.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:/home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.srcs/constrs_1/imports/Downloads/F5QMAYQILV7T6TF.xdc rfile:../../../project_1.srcs/constrs_1/imports/Downloads/F5QMAYQILV7T6TF.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:1 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN    Y9 [get_ports {   GCLK_100 } ]
 set_property src_info {type:XDC file:1 line:2 export:INPUT save:INPUT read:READ} [current_design]

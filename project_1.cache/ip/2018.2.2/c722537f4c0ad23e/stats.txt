@@ -1,0 +1,4 @@
+NumberHits:0
+Timestamp: Sun Dec 09 22:29:50 UTC 2018
+VLNV: xilinx.com:ip:c_shift_ram:12.0
+SynthRuntime: 133

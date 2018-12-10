@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.2.2 (lin64) Build 2348494 Mon Oct  1 18:25:39 MDT 2018
-| Date             : Fri Dec  7 06:23:32 2018
+| Date             : Mon Dec 10 03:49:18 2018
 | Host             : saba-VirtualBox running 64-bit Ubuntu 18.04.1 LTS
 | Command          : report_power -file main_project_top_power_routed.rpt -pb main_project_top_power_summary_routed.pb -rpx main_project_top_power_routed.rpx
 | Design           : main_project_top
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.241        |
+| Total On-Chip Power (W)  | 0.246        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.128        |
+| Dynamic (W)              | 0.132        |
 | Device Static (W)        | 0.114        |
 | Effective TJA (C/W)      | 11.5         |
 | Max Ambient (C)          | 82.2         |
@@ -49,24 +49,25 @@ Table of Contents
 1.1 On-Chip Components
 ----------------------
 
-+----------------+-----------+----------+-----------+-----------------+
-| On-Chip        | Power (W) | Used     | Available | Utilization (%) |
-+----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.004 |        6 |       --- |             --- |
-| Slice Logic    |    <0.001 |     2062 |       --- |             --- |
-|   LUT as Logic |    <0.001 |      924 |     53200 |            1.74 |
-|   Register     |    <0.001 |      490 |    106400 |            0.46 |
-|   CARRY4       |    <0.001 |       56 |     13300 |            0.42 |
-|   BUFG         |    <0.001 |        2 |        32 |            6.25 |
-|   F7/F8 Muxes  |    <0.001 |      127 |     53200 |            0.24 |
-|   Others       |     0.000 |      322 |       --- |             --- |
-| Signals        |     0.003 |     1918 |       --- |             --- |
-| Block RAM      |     0.007 |      104 |       140 |           74.29 |
-| MMCM           |     0.106 |        1 |         4 |           25.00 |
-| I/O            |     0.008 |       64 |       200 |           32.00 |
-| Static Power   |     0.114 |          |           |                 |
-| Total          |     0.241 |          |           |                 |
-+----------------+-----------+----------+-----------+-----------------+
++-------------------------+-----------+----------+-----------+-----------------+
+| On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
++-------------------------+-----------+----------+-----------+-----------------+
+| Clocks                  |     0.004 |        6 |       --- |             --- |
+| Slice Logic             |    <0.001 |     3992 |       --- |             --- |
+|   LUT as Logic          |    <0.001 |     1788 |     53200 |            3.36 |
+|   Register              |    <0.001 |      695 |    106400 |            0.65 |
+|   CARRY4                |    <0.001 |      204 |     13300 |            1.53 |
+|   BUFG                  |    <0.001 |        2 |        32 |            6.25 |
+|   F7/F8 Muxes           |    <0.001 |      127 |     53200 |            0.24 |
+|   LUT as Shift Register |     0.000 |      480 |     17400 |            2.76 |
+|   Others                |     0.000 |      322 |       --- |             --- |
+| Signals                 |     0.003 |     2963 |       --- |             --- |
+| Block RAM               |     0.013 |      104 |       140 |           74.29 |
+| MMCM                    |     0.106 |        1 |         4 |           25.00 |
+| I/O                     |     0.006 |       64 |       200 |           32.00 |
+| Static Power            |     0.114 |          |           |                 |
+| Total                   |     0.246 |          |           |                 |
++-------------------------+-----------+----------+-----------+-----------------+
 
 
 1.2 Power Supply Summary
@@ -75,7 +76,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.024 |       0.014 |      0.010 |
+| Vccint    |       1.000 |     0.029 |       0.020 |      0.010 |
 | Vccaux    |       1.800 |     0.069 |       0.059 |      0.011 |
 | Vcco33    |       3.300 |     0.003 |       0.002 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -105,7 +106,7 @@ Table of Contents
 | User Input Data             | Confidence | Details                                                | Action                                                                                                             |
 +-----------------------------+------------+--------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
 | Design implementation state | High       | Design is routed                                       |                                                                                                                    |
-| Clock nodes activity        | Low        | User specified less than 75% of clocks                 | Provide missing clock activity with a constraint file, simulation results or by editing the "By Clock Domain" view |
+| Clock nodes activity        | Medium     | More than 5% of clocks are missing user specification  | Provide missing clock activity with a constraint file, simulation results or by editing the "By Clock Domain" view |
 | I/O nodes activity          | Low        | More than 75% of inputs are missing user specification | Provide missing input activity with simulation results or by editing the "By Resource Type -> I/Os" view           |
 | Internal nodes activity     | Medium     | User specified less than 25% of internal nodes         | Provide missing internal nodes activity with simulation results or by editing the "By Resource Type" views         |
 | Device models               | High       | Device models are Production                           |                                                                                                                    |
@@ -154,7 +155,7 @@ Table of Contents
 +----------------------------------------------+-----------+
 | Name                                         | Power (W) |
 +----------------------------------------------+-----------+
-| main_project_top                             |     0.128 |
+| main_project_top                             |     0.132 |
 |   Inst_Address_Generator                     |    <0.001 |
 |   Inst_VGA                                   |    <0.001 |
 |   cam1                                       |     0.002 |
@@ -171,14 +172,14 @@ Table of Contents
 |       Inst_ov7670_registers                  |    <0.001 |
 |   clock_inst                                 |     0.106 |
 |     inst                                     |     0.106 |
-|   memory_block_cam_1                         |     0.004 |
-|     U0                                       |     0.004 |
-|       inst_blk_mem_gen                       |     0.004 |
-|         gnbram.gnativebmg.native_blk_mem_gen |     0.004 |
-|           valid.cstr                         |     0.004 |
+|   memory_block_cam_1                         |     0.007 |
+|     U0                                       |     0.007 |
+|       inst_blk_mem_gen                       |     0.007 |
+|         gnbram.gnativebmg.native_blk_mem_gen |     0.007 |
+|           valid.cstr                         |     0.007 |
 |             has_mux_b.B                      |    <0.001 |
-|             ramloop[0].ram.r                 |    <0.001 |
-|               prim_noinit.ram                |    <0.001 |
+|             ramloop[0].ram.r                 |     0.002 |
+|               prim_noinit.ram                |     0.002 |
 |             ramloop[10].ram.r                |    <0.001 |
 |               prim_noinit.ram                |    <0.001 |
 |             ramloop[11].ram.r                |    <0.001 |
@@ -255,14 +256,14 @@ Table of Contents
 |               prim_noinit.ram                |    <0.001 |
 |             ramloop[44].ram.r                |    <0.001 |
 |               prim_noinit.ram                |    <0.001 |
-|             ramloop[45].ram.r                |    <0.001 |
-|               prim_noinit.ram                |    <0.001 |
+|             ramloop[45].ram.r                |     0.002 |
+|               prim_noinit.ram                |     0.002 |
 |             ramloop[46].ram.r                |    <0.001 |
 |               prim_noinit.ram                |    <0.001 |
 |             ramloop[47].ram.r                |    <0.001 |
 |               prim_noinit.ram                |    <0.001 |
-|             ramloop[4].ram.r                 |    <0.001 |
-|               prim_noinit.ram                |    <0.001 |
+|             ramloop[4].ram.r                 |     0.002 |
+|               prim_noinit.ram                |     0.002 |
 |             ramloop[5].ram.r                 |    <0.001 |
 |               prim_noinit.ram                |    <0.001 |
 |             ramloop[6].ram.r                 |    <0.001 |
@@ -273,14 +274,14 @@ Table of Contents
 |               prim_noinit.ram                |    <0.001 |
 |             ramloop[9].ram.r                 |    <0.001 |
 |               prim_noinit.ram                |    <0.001 |
-|   memory_block_cam_2                         |     0.004 |
-|     U0                                       |     0.004 |
-|       inst_blk_mem_gen                       |     0.004 |
-|         gnbram.gnativebmg.native_blk_mem_gen |     0.004 |
-|           valid.cstr                         |     0.004 |
+|   memory_block_cam_2                         |     0.007 |
+|     U0                                       |     0.007 |
+|       inst_blk_mem_gen                       |     0.007 |
+|         gnbram.gnativebmg.native_blk_mem_gen |     0.007 |
+|           valid.cstr                         |     0.007 |
 |             has_mux_b.B                      |    <0.001 |
-|             ramloop[0].ram.r                 |    <0.001 |
-|               prim_noinit.ram                |    <0.001 |
+|             ramloop[0].ram.r                 |     0.002 |
+|               prim_noinit.ram                |     0.002 |
 |             ramloop[10].ram.r                |    <0.001 |
 |               prim_noinit.ram                |    <0.001 |
 |             ramloop[11].ram.r                |    <0.001 |
@@ -357,14 +358,14 @@ Table of Contents
 |               prim_noinit.ram                |    <0.001 |
 |             ramloop[44].ram.r                |    <0.001 |
 |               prim_noinit.ram                |    <0.001 |
-|             ramloop[45].ram.r                |    <0.001 |
-|               prim_noinit.ram                |    <0.001 |
+|             ramloop[45].ram.r                |     0.002 |
+|               prim_noinit.ram                |     0.002 |
 |             ramloop[46].ram.r                |    <0.001 |
 |               prim_noinit.ram                |    <0.001 |
 |             ramloop[47].ram.r                |    <0.001 |
 |               prim_noinit.ram                |    <0.001 |
-|             ramloop[4].ram.r                 |    <0.001 |
-|               prim_noinit.ram                |    <0.001 |
+|             ramloop[4].ram.r                 |     0.002 |
+|               prim_noinit.ram                |     0.002 |
 |             ramloop[5].ram.r                 |    <0.001 |
 |               prim_noinit.ram                |    <0.001 |
 |             ramloop[6].ram.r                 |    <0.001 |

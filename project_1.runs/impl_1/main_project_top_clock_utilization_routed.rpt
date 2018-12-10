@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2.2 (lin64) Build 2348494 Mon Oct  1 18:25:39 MDT 2018
-| Date         : Fri Dec  7 06:23:35 2018
+| Date         : Mon Dec 10 03:49:21 2018
 | Host         : saba-VirtualBox running 64-bit Ubuntu 18.04.1 LTS
 | Command      : report_clock_utilization -file main_project_top_clock_utilization_routed.rpt
 | Design       : main_project_top
@@ -52,7 +52,7 @@ Table of Contents
 +-----------+-----------+-----------------+------------+---------------+--------------+-------------------+-------------+-----------------+--------------+--------------------+--------------------------------+----------------------------------------+
 | Global Id | Source Id | Driver Type/Pin | Constraint | Site          | Clock Region | Load Clock Region | Clock Loads | Non-Clock Loads | Clock Period | Clock              | Driver Pin                     | Net                                    |
 +-----------+-----------+-----------------+------------+---------------+--------------+-------------------+-------------+-----------------+--------------+--------------------+--------------------------------+----------------------------------------+
-| g0        | src0      | BUFG/O          | None       | BUFGCTRL_X0Y0 | n/a          |                 6 |         383 |               0 |       20.000 | clk_out2_clk_wiz_0 | clock_inst/inst/clkout2_buf/O  | clock_inst/inst/clk_out2               |
+| g0        | src0      | BUFG/O          | None       | BUFGCTRL_X0Y0 | n/a          |                 6 |        1068 |               0 |       20.000 | clk_out2_clk_wiz_0 | clock_inst/inst/clkout2_buf/O  | clock_inst/inst/clk_out2               |
 | g1        | src1      | BUFG/O          | None       | BUFGCTRL_X0Y1 | n/a          |                 3 |         141 |               0 |              |                    | OV7670_PCLK_1_IBUF_BUFG_inst/O | OV7670_PCLK_1_IBUF_BUFG                |
 | g2        | src2      | BUFG/O          | None       | BUFGCTRL_X0Y2 | n/a          |                 6 |         141 |               0 |              |                    | OV7670_PCLK_2_IBUF_BUFG_inst/O | OV7670_PCLK_2_IBUF_BUFG                |
 | g3        | src0      | BUFG/O          | None       | BUFGCTRL_X0Y3 | n/a          |                 1 |          41 |               0 |       40.000 | clk_out3_clk_wiz_0 | clock_inst/inst/clkout3_buf/O  | clock_inst/inst/clk_out3               |
@@ -86,12 +86,12 @@ Table of Contents
 +-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
 | Clock Region Name | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail |
 +-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
-| X0Y0              |    4 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    1 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  117 |  2500 |   53 |  1000 |    0 |    60 |   28 |    30 |    0 |    60 |
-| X1Y0              |    4 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  360 |  3200 |  125 |   850 |    2 |    60 |   28 |    30 |    0 |    40 |
-| X0Y1              |    2 |    12 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |  1200 |    0 |   400 |    0 |    20 |   10 |    10 |    0 |    20 |
-| X1Y1              |    3 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |   13 |  2600 |    6 |   850 |    1 |    60 |   28 |    30 |    0 |    40 |
-| X0Y2              |    2 |    12 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |  1200 |    0 |   400 |    0 |    20 |    3 |    10 |    0 |    20 |
-| X1Y2              |    2 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    0 |  2600 |    0 |   850 |    0 |    60 |    3 |    30 |    0 |    40 |
+| X0Y0              |    4 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    1 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  111 |  2500 |   46 |  1000 |    0 |    60 |   30 |    30 |    0 |    60 |
+| X1Y0              |    4 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  550 |  3200 |  559 |   850 |    2 |    60 |   26 |    30 |    0 |    40 |
+| X0Y1              |    3 |    12 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |  1200 |    0 |   400 |    0 |    20 |   10 |    10 |    0 |    20 |
+| X1Y1              |    2 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |   34 |  2600 |   29 |   850 |    0 |    60 |   29 |    30 |    0 |    40 |
+| X0Y2              |    2 |    12 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |  1200 |    0 |   400 |    0 |    20 |    1 |    10 |    0 |    20 |
+| X1Y2              |    2 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    0 |  2600 |    0 |   850 |    1 |    60 |    4 |    30 |    0 |    40 |
 +-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
 * Global Clock column represents track count; while other columns represents cell counts
 
@@ -104,7 +104,7 @@ All Modules
 |    | X0 | X1 |
 +----+----+----+
 | Y2 |  2 |  2 |
-| Y1 |  2 |  3 |
+| Y1 |  3 |  2 |
 | Y0 |  4 |  4 |
 +----+----+----+
 
@@ -115,7 +115,7 @@ All Modules
 +-----------+-----------------+-------------------+--------------------+-------------+----------------+-------------+----------+----------------+----------+--------------------------+
 | Global Id | Driver Type/Pin | Driver Region (D) | Clock              | Period (ns) | Waveform (ns)  | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net                      |
 +-----------+-----------------+-------------------+--------------------+-------------+----------------+-------------+----------+----------------+----------+--------------------------+
-| g0        | BUFG/O          | n/a               | clk_out2_clk_wiz_0 |      20.000 | {0.000 10.000} |         383 |        0 |              0 |        0 | clock_inst/inst/clk_out2 |
+| g0        | BUFG/O          | n/a               | clk_out2_clk_wiz_0 |      20.000 | {0.000 10.000} |        1068 |        0 |              0 |        0 | clock_inst/inst/clk_out2 |
 +-----------+-----------------+-------------------+--------------------+-------------+----------------+-------------+----------+----------------+----------+--------------------------+
 * Logic Loads column represents load cell count of all cell types other than IO, GT and clock resources
 ** IO Loads column represents load cell count of IO types
@@ -126,9 +126,9 @@ All Modules
 +----+-----+------+
 |    | X0  | X1   |
 +----+-----+------+
-| Y2 |   3 |    3 |
-| Y1 |  10 |   40 |
-| Y0 |  41 |  286 |
+| Y2 |   1 |    6 |
+| Y1 |  10 |   65 |
+| Y0 |  37 |  949 |
 +----+-----+------+
 
 
@@ -150,8 +150,8 @@ All Modules
 |    | X0   | X1  |
 +----+------+-----+
 | Y2 |    0 |   0 |
-| Y1 |    0 |   2 |
-| Y0 |  112 |  27 |
+| Y1 |    1 |   0 |
+| Y0 |  113 |  27 |
 +----+------+-----+
 
 
@@ -172,9 +172,9 @@ All Modules
 +----+-----+-----+
 |    | X0  | X1  |
 +----+-----+-----+
-| Y2 |   3 |   3 |
-| Y1 |  10 |  31 |
-| Y0 |  24 |  70 |
+| Y2 |   1 |   6 |
+| Y1 |   9 |  51 |
+| Y0 |  21 |  53 |
 +----+-----+-----+
 
 
@@ -230,9 +230,9 @@ All Modules
 +-----------+-------+-----------------+------------+-------------+-----------------+----+--------+------+-----+----+------+-----+---------+----------------------------------------+
 | Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF | LUTRAM | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net                                    |
 +-----------+-------+-----------------+------------+-------------+-----------------+----+--------+------+-----+----+------+-----+---------+----------------------------------------+
-| g0        | n/a   | BUFG/O          | None       |          41 |               0 | 11 |      0 |   28 |   0 |  0 |    0 |   0 |       0 | clock_inst/inst/clk_out2               |
-| g1        | n/a   | BUFG/O          | None       |         112 |               0 | 87 |      0 |   24 |   0 |  0 |    0 |   0 |       0 | OV7670_PCLK_1_IBUF_BUFG                |
-| g2        | n/a   | BUFG/O          | None       |          24 |               0 | 19 |      0 |    4 |   0 |  0 |    0 |   0 |       0 | OV7670_PCLK_2_IBUF_BUFG                |
+| g0        | n/a   | BUFG/O          | None       |          37 |               0 |  7 |      0 |   30 |   0 |  0 |    0 |   0 |       0 | clock_inst/inst/clk_out2               |
+| g1        | n/a   | BUFG/O          | None       |         113 |               0 | 83 |      0 |   30 |   0 |  0 |    0 |   0 |       0 | OV7670_PCLK_1_IBUF_BUFG                |
+| g2        | n/a   | BUFG/O          | None       |          21 |               0 | 21 |      0 |    0 |   0 |  0 |    0 |   0 |       0 | OV7670_PCLK_2_IBUF_BUFG                |
 | g4        | n/a   | BUFG/O          | None       |           1 |               0 |  0 |      0 |    0 |   0 |  0 |    1 |   0 |       0 | clock_inst/inst/clkfbout_buf_clk_wiz_0 |
 +-----------+-------+-----------------+------------+-------------+-----------------+----+--------+------+-----+----+------+-----+---------+----------------------------------------+
 * Clock Loads column represents the clock pin loads (pin count)
@@ -246,9 +246,9 @@ All Modules
 +-----------+-------+-----------------+------------+-------------+-----------------+-----+--------+------+-----+----+------+-----+---------+--------------------------+
 | Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF  | LUTRAM | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net                      |
 +-----------+-------+-----------------+------------+-------------+-----------------+-----+--------+------+-----+----+------+-----+---------+--------------------------+
-| g0        | n/a   | BUFG/O          | None       |         286 |               0 | 254 |      0 |   30 |   0 |  0 |    0 |   0 |       0 | clock_inst/inst/clk_out2 |
-| g1        | n/a   | BUFG/O          | None       |          27 |               0 |   0 |      0 |   26 |   0 |  0 |    0 |   0 |       0 | OV7670_PCLK_1_IBUF_BUFG  |
-| g2        | n/a   | BUFG/O          | None       |          70 |               0 |  65 |      0 |    4 |   0 |  0 |    0 |   0 |       0 | OV7670_PCLK_2_IBUF_BUFG  |
+| g0        | n/a   | BUFG/O          | None       |         949 |               0 | 461 |    456 |   28 |   0 |  0 |    0 |   0 |       0 | clock_inst/inst/clk_out2 |
+| g1        | n/a   | BUFG/O          | None       |          27 |               0 |   4 |      0 |   20 |   0 |  0 |    0 |   0 |       0 | OV7670_PCLK_1_IBUF_BUFG  |
+| g2        | n/a   | BUFG/O          | None       |          53 |               0 |  44 |      0 |    8 |   0 |  0 |    0 |   0 |       0 | OV7670_PCLK_2_IBUF_BUFG  |
 | g3        | n/a   | BUFG/O          | None       |          41 |               0 |  41 |      0 |    0 |   0 |  0 |    0 |   0 |       0 | clock_inst/inst/clk_out3 |
 +-----------+-------+-----------------+------------+-------------+-----------------+-----+--------+------+-----+----+------+-----+---------+--------------------------+
 * Clock Loads column represents the clock pin loads (pin count)
@@ -263,7 +263,8 @@ All Modules
 | Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF | LUTRAM | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net                      |
 +-----------+-------+-----------------+------------+-------------+-----------------+----+--------+------+-----+----+------+-----+---------+--------------------------+
 | g0        | n/a   | BUFG/O          | None       |          10 |               0 |  0 |      0 |   10 |   0 |  0 |    0 |   0 |       0 | clock_inst/inst/clk_out2 |
-| g2        | n/a   | BUFG/O          | None       |          10 |               0 |  0 |      0 |   10 |   0 |  0 |    0 |   0 |       0 | OV7670_PCLK_2_IBUF_BUFG  |
+| g1        | n/a   | BUFG/O          | None       |           1 |               0 |  0 |      0 |    1 |   0 |  0 |    0 |   0 |       0 | OV7670_PCLK_1_IBUF_BUFG  |
+| g2        | n/a   | BUFG/O          | None       |           9 |               0 |  0 |      0 |    9 |   0 |  0 |    0 |   0 |       0 | OV7670_PCLK_2_IBUF_BUFG  |
 +-----------+-------+-----------------+------------+-------------+-----------------+----+--------+------+-----+----+------+-----+---------+--------------------------+
 * Clock Loads column represents the clock pin loads (pin count)
 ** Non-Clock Loads column represents the non-clock pin loads (pin count)
@@ -276,9 +277,8 @@ All Modules
 +-----------+-------+-----------------+------------+-------------+-----------------+----+--------+------+-----+----+------+-----+---------+--------------------------+
 | Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF | LUTRAM | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net                      |
 +-----------+-------+-----------------+------------+-------------+-----------------+----+--------+------+-----+----+------+-----+---------+--------------------------+
-| g0        | n/a   | BUFG/O          | None       |          40 |               0 | 10 |      0 |   29 |   0 |  0 |    0 |   0 |       0 | clock_inst/inst/clk_out2 |
-| g1        | n/a   | BUFG/O          | None       |           2 |               0 |  0 |      0 |    1 |   0 |  0 |    0 |   0 |       0 | OV7670_PCLK_1_IBUF_BUFG  |
-| g2        | n/a   | BUFG/O          | None       |          31 |               0 |  3 |      0 |   28 |   0 |  0 |    0 |   0 |       0 | OV7670_PCLK_2_IBUF_BUFG  |
+| g0        | n/a   | BUFG/O          | None       |          65 |               0 | 12 |     24 |   29 |   0 |  0 |    0 |   0 |       0 | clock_inst/inst/clk_out2 |
+| g2        | n/a   | BUFG/O          | None       |          51 |               0 | 22 |      0 |   29 |   0 |  0 |    0 |   0 |       0 | OV7670_PCLK_2_IBUF_BUFG  |
 +-----------+-------+-----------------+------------+-------------+-----------------+----+--------+------+-----+----+------+-----+---------+--------------------------+
 * Clock Loads column represents the clock pin loads (pin count)
 ** Non-Clock Loads column represents the non-clock pin loads (pin count)
@@ -291,8 +291,8 @@ All Modules
 +-----------+-------+-----------------+------------+-------------+-----------------+----+--------+------+-----+----+------+-----+---------+--------------------------+
 | Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF | LUTRAM | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net                      |
 +-----------+-------+-----------------+------------+-------------+-----------------+----+--------+------+-----+----+------+-----+---------+--------------------------+
-| g0        | n/a   | BUFG/O          | None       |           3 |               0 |  0 |      0 |    3 |   0 |  0 |    0 |   0 |       0 | clock_inst/inst/clk_out2 |
-| g2        | n/a   | BUFG/O          | None       |           3 |               0 |  0 |      0 |    3 |   0 |  0 |    0 |   0 |       0 | OV7670_PCLK_2_IBUF_BUFG  |
+| g0        | n/a   | BUFG/O          | None       |           1 |               0 |  0 |      0 |    1 |   0 |  0 |    0 |   0 |       0 | clock_inst/inst/clk_out2 |
+| g2        | n/a   | BUFG/O          | None       |           1 |               0 |  0 |      0 |    1 |   0 |  0 |    0 |   0 |       0 | OV7670_PCLK_2_IBUF_BUFG  |
 +-----------+-------+-----------------+------------+-------------+-----------------+----+--------+------+-----+----+------+-----+---------+--------------------------+
 * Clock Loads column represents the clock pin loads (pin count)
 ** Non-Clock Loads column represents the non-clock pin loads (pin count)
@@ -305,8 +305,8 @@ All Modules
 +-----------+-------+-----------------+------------+-------------+-----------------+----+--------+------+-----+----+------+-----+---------+--------------------------+
 | Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF | LUTRAM | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net                      |
 +-----------+-------+-----------------+------------+-------------+-----------------+----+--------+------+-----+----+------+-----+---------+--------------------------+
-| g0        | n/a   | BUFG/O          | None       |           3 |               0 |  0 |      0 |    3 |   0 |  0 |    0 |   0 |       0 | clock_inst/inst/clk_out2 |
-| g2        | n/a   | BUFG/O          | None       |           3 |               0 |  0 |      0 |    3 |   0 |  0 |    0 |   0 |       0 | OV7670_PCLK_2_IBUF_BUFG  |
+| g0        | n/a   | BUFG/O          | None       |           6 |               0 |  0 |      0 |    5 |   0 |  0 |    0 |   0 |       0 | clock_inst/inst/clk_out2 |
+| g2        | n/a   | BUFG/O          | None       |           6 |               0 |  0 |      0 |    5 |   0 |  0 |    0 |   0 |       0 | OV7670_PCLK_2_IBUF_BUFG  |
 +-----------+-------+-----------------+------------+-------------+-----------------+----+--------+------+-----+----+------+-----+---------+--------------------------+
 * Clock Loads column represents the clock pin loads (pin count)
 ** Non-Clock Loads column represents the non-clock pin loads (pin count)
@@ -353,5 +353,5 @@ resize_pblock [get_pblocks {CLKAG_OV7670_PCLK_2_IBUF_BUFG}] -add {CLOCKREGION_X0
 #startgroup
 create_pblock {CLKAG_OV7670_PCLK_1_IBUF_BUFG}
 add_cells_to_pblock [get_pblocks  {CLKAG_OV7670_PCLK_1_IBUF_BUFG}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="OV7670_PCLK_1_IBUF_BUFG"}]]]
-resize_pblock [get_pblocks {CLKAG_OV7670_PCLK_1_IBUF_BUFG}] -add {CLOCKREGION_X0Y0:CLOCKREGION_X0Y0 CLOCKREGION_X1Y0:CLOCKREGION_X1Y0 CLOCKREGION_X1Y1:CLOCKREGION_X1Y1}
+resize_pblock [get_pblocks {CLKAG_OV7670_PCLK_1_IBUF_BUFG}] -add {CLOCKREGION_X0Y0:CLOCKREGION_X0Y0 CLOCKREGION_X0Y1:CLOCKREGION_X0Y1 CLOCKREGION_X1Y0:CLOCKREGION_X1Y0}
 #endgroup

@@ -126,6 +126,9 @@ component clk_wiz_0
 		);
 	END COMPONENT;
 
+
+TYPE MEM is ARRAY(0 to 639) of STD_LOGIC_VECTOR(11 downto 0);
+
 SIGNAL vga_red_internal_1      :  STD_LOGIC_VECTOR(3 downto 0);
 SIGNAL vga_green_internal_1    :  STD_LOGIC_VECTOR(3 downto 0);
 SIGNAL vga_blue_internal_1     :  STD_LOGIC_VECTOR(3 downto 0);
@@ -179,8 +182,34 @@ SIGNAL gray_scale_cam_2: std_logic_vector(3 downto 0):= (others =>'0');
 signal nBlank     : std_logic;
 signal activeArea : std_logic;
 
- signal rdaddress  : std_logic_vector(MEM_ADDR_SIZE downto 0);
+signal rdaddress  : std_logic_vector(MEM_ADDR_SIZE downto 0);
 
+signal shift_reg_0: MEM;
+signal shift_reg_1: MEM;
+signal shift_reg_2: MEM;
+
+signal p0: std_logic_vector(3 downto 0):= (others =>'0');
+signal p1: std_logic_vector(3 downto 0):= (others =>'0');
+signal p2: std_logic_vector(3 downto 0):= (others =>'0');
+signal p3: std_logic_vector(3 downto 0):= (others =>'0');
+signal p4: std_logic_vector(3 downto 0):= (others =>'0');
+signal p5: std_logic_vector(3 downto 0):= (others =>'0');
+signal p6: std_logic_vector(3 downto 0):= (others =>'0');
+signal p7: std_logic_vector(3 downto 0):= (others =>'0');
+signal p8: std_logic_vector(3 downto 0):= (others =>'0');
+
+signal f1: std_logic_vector(5 downto 0):= (others =>'0');
+signal f2: std_logic_vector(5 downto 0):= (others =>'0');
+signal f3: std_logic_vector(5 downto 0):= (others =>'0');
+signal f4: std_logic_vector(5 downto 0):= (others =>'0');
+
+signal Gx: std_logic_vector(5 downto 0):= (others =>'0');
+signal Gy: std_logic_vector(5 downto 0):= (others =>'0');
+
+signal G: std_logic_vector(5 downto 0):= (others =>'0');
+
+signal sobel_out : std_logic_vector(11 downto 0):= (others =>'0');
+signal avg : std_logic_vector(11 downto 0):= (others =>'0');
 begin
 
 clock_inst : clk_wiz_0
@@ -219,19 +248,6 @@ memory_block_cam_1 : blk_mem_gen_0
       addrb => frame_addr_cam_2,
       doutb => frame_pixel_cam_2
     );
-  
---	Inst_vga: vga 
---  GENERIC MAP (MEM_ADDR_SIZE => MEM_ADDR_SIZE)
---  PORT MAP(
---      clk25       => clk_25_internal,
---      vga_red     => vga_red_int,
---      vga_green   => vga_green_int,
---      vga_blue    => vga_blue_int,
---      vga_hsync   => vga_hsync_int,
---      vga_vsync   => vga_vsync_int,
---      frame_addr  => frame_addr,
---      frame_pixel => frame_pixel
---  );  
 
 	Inst_VGA: VGA PORT MAP(
 		CLK25      => clk_25_internal,
@@ -240,14 +256,14 @@ memory_block_cam_1 : blk_mem_gen_0
         activeArea => activeArea
 	);
 	
-		Inst_Address_Generator: Address_Generator 
-		GENERIC MAP (MEM_ADDR_SIZE => MEM_ADDR_SIZE)
-		PORT MAP(
-        CLK25 => clk_25_internal,
-        enable => activeArea,
-        vsync  => vga_vsync_int,
-        address => rdaddress
-    );
+Inst_Address_Generator: Address_Generator 
+    GENERIC MAP (MEM_ADDR_SIZE => MEM_ADDR_SIZE)
+    PORT MAP(
+    CLK25 => clk_25_internal,
+    enable => activeArea,
+    vsync  => vga_vsync_int,
+    address => rdaddress
+);
 
 cam1: ov7670_top 
     GENERIC MAP (MEM_ADDR_SIZE => MEM_ADDR_SIZE)
@@ -300,7 +316,7 @@ BEGIN
 IF (rising_edge(clk_50_internal)) then
         vga_hsync    <= vga_hsync_int; 
         vga_vsync    <= vga_vsync_int;
-IF (SW = "00000000") THEN
+IF (SW = "00000000") THEN -- cam 1
 
         if (activeArea='1') then
             vga_red <= frame_pixel_cam_1(11 downto 8);
@@ -313,7 +329,7 @@ IF (SW = "00000000") THEN
         end if;        
 
         
-ELSIF (SW = "00000001") THEN
+ELSIF (SW = "00000001") THEN -- cam 2
 
         if (activeArea='1') then
             vga_red <= frame_pixel_cam_2(11 downto 8);
@@ -324,7 +340,7 @@ ELSIF (SW = "00000001") THEN
             vga_green <= "0000";
             vga_blue <= "0000";
         end if;  
-ELSIF (SW = "00000010") THEN
+ELSIF (SW = "00000010") THEN -- gray scale cam 1
        
         gray_scale_cam_1 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(frame_pixel_cam_1(11 downto 8)))/100) + (59*to_integer(unsigned(frame_pixel_cam_1(7 downto 4)))/100) + (11*to_integer(unsigned(frame_pixel_cam_1(3 downto 0)))/100),4));
         if (activeArea='1') then
@@ -338,7 +354,7 @@ ELSIF (SW = "00000010") THEN
         end if;  
 
 
-ELSIF (SW = "00000011") THEN
+ELSIF (SW = "00000011") THEN -- gray scale cam 2
         gray_scale_cam_2 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(frame_pixel_cam_2(11 downto 8)))/100) + (59*to_integer(unsigned(frame_pixel_cam_2(7 downto 4)))/100) + (11*to_integer(unsigned(frame_pixel_cam_2(3 downto 0)))/100),4));
 
         if (activeArea='1') then
@@ -350,7 +366,7 @@ ELSIF (SW = "00000011") THEN
             vga_green <= "0000";
             vga_blue <= "0000";
         end if;  
-ELSIF (SW = "00000100") THEN
+ELSIF (SW = "00000100") THEN -- 3D cam 1 red cam 2 green
         if (activeArea='1') then
           vga_red <= frame_pixel_cam_1(11 downto 8);
           vga_green <= frame_pixel_cam_2(7 downto 4);
@@ -360,7 +376,7 @@ ELSIF (SW = "00000100") THEN
           vga_green <= "0000";
           vga_blue <= "0000";
          end if;
-ELSIF (SW = "00000101") THEN
+ELSIF (SW = "00000101") THEN -- 3D cam 2 red cam 1 green
          if (activeArea='1') then
            vga_red <= frame_pixel_cam_2(11 downto 8);
            vga_green <= frame_pixel_cam_1(7 downto 4);
@@ -371,28 +387,31 @@ ELSIF (SW = "00000101") THEN
            vga_blue <= "0000";
           end if;
 
-ELSIF (SW = "00000110") THEN
+ELSIF (SW = "00001000") THEN -- gray scale subtraction 
            if (activeArea='1') then
-             vga_red <= std_logic_vector(to_unsigned(to_integer(unsigned(frame_pixel_cam_1(11 downto 8)))-to_integer(unsigned(frame_pixel_cam_2(11 downto 8))),4));
-             vga_green <= std_logic_vector(to_unsigned(to_integer(unsigned(frame_pixel_cam_1(7 downto 4)))-to_integer(unsigned(frame_pixel_cam_2(7 downto 4))),4));
-             vga_blue <= std_logic_vector(to_unsigned(to_integer(unsigned(frame_pixel_cam_1(3 downto 0)))-to_integer(unsigned(frame_pixel_cam_2(3 downto 0))),4)); 
+            gray_scale_cam_1 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(frame_pixel_cam_1(11 downto 8)))/100) + (59*to_integer(unsigned(frame_pixel_cam_1(7 downto 4)))/100) + (11*to_integer(unsigned(frame_pixel_cam_1(3 downto 0)))/100),4));
+            gray_scale_cam_2 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(frame_pixel_cam_2(11 downto 8)))/100) + (59*to_integer(unsigned(frame_pixel_cam_2(7 downto 4)))/100) + (11*to_integer(unsigned(frame_pixel_cam_2(3 downto 0)))/100),4));
+            vga_red <= std_logic_vector(abs(to_signed(to_integer(unsigned(gray_scale_cam_1)) - to_integer(unsigned(gray_scale_cam_2)),4)));
+            vga_green <= std_logic_vector(abs(to_signed(to_integer(unsigned(gray_scale_cam_1)) - to_integer(unsigned(gray_scale_cam_2)),4)));
+            vga_blue <= std_logic_vector(abs(to_signed(to_integer(unsigned(gray_scale_cam_1)) - to_integer(unsigned(gray_scale_cam_2)),4))); 
            else
              vga_red <= "0000";
              vga_green <= "0000";
              vga_blue <= "0000";
             end if;
-ELSIF (SW = "00000111") THEN
+            
+ELSIF (SW = "00001001") THEN -- color images subtraction
            if (activeArea='1') then
-             vga_red <= std_logic_vector(to_unsigned(to_integer(unsigned(frame_pixel_cam_2(11 downto 8)))-to_integer(unsigned(frame_pixel_cam_1(11 downto 8))),4));
-             vga_green <= std_logic_vector(to_unsigned(to_integer(unsigned(frame_pixel_cam_2(7 downto 4)))-to_integer(unsigned(frame_pixel_cam_1(7 downto 4))),4));
-             vga_blue <= std_logic_vector(to_unsigned(to_integer(unsigned(frame_pixel_cam_2(3 downto 0)))-to_integer(unsigned(frame_pixel_cam_1(3 downto 0))),4)); 
+             vga_red <= std_logic_vector(abs(to_signed(to_integer(unsigned(frame_pixel_cam_2(11 downto 8)))-to_integer(unsigned(frame_pixel_cam_1(11 downto 8))),4)));
+             vga_green <= std_logic_vector(abs(to_signed(to_integer(unsigned(frame_pixel_cam_2(7 downto 4)))-to_integer(unsigned(frame_pixel_cam_1(7 downto 4))),4)));
+             vga_blue <= std_logic_vector(abs(to_signed(to_integer(unsigned(frame_pixel_cam_2(3 downto 0)))-to_integer(unsigned(frame_pixel_cam_1(3 downto 0))),4))); 
            else
              vga_red <= "0000";
              vga_green <= "0000";
              vga_blue <= "0000";
             end if;
 
-ELSIF (SW = "00001000") THEN -- black and white
+ELSIF (SW = "00010000") THEN -- black and white cam 1
            if (activeArea='1') then
                 gray_scale_cam_1 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(frame_pixel_cam_1(11 downto 8)))/100) + (59*to_integer(unsigned(frame_pixel_cam_1(7 downto 4)))/100) + (11*to_integer(unsigned(frame_pixel_cam_1(3 downto 0)))/100),4));
                 if (to_integer(unsigned(gray_scale_cam_1)) >  7) then
@@ -410,7 +429,7 @@ ELSIF (SW = "00001000") THEN -- black and white
              vga_green <= "0000";
              vga_blue <= "0000";
             end if;
-ELSIF (SW = "00001001") THEN -- black and white
+ELSIF (SW = "00010001") THEN -- black and white cam 2
            if (activeArea='1') then
                 gray_scale_cam_2 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(frame_pixel_cam_2(11 downto 8)))/100) + (59*to_integer(unsigned(frame_pixel_cam_2(7 downto 4)))/100) + (11*to_integer(unsigned(frame_pixel_cam_2(3 downto 0)))/100),4));
                 if (to_integer(unsigned(gray_scale_cam_2)) >  7) then
@@ -428,6 +447,283 @@ ELSIF (SW = "00001001") THEN -- black and white
              vga_green <= "0000";
              vga_blue <= "0000";
             end if;
+ELSIF (SW = "00100000") THEN -- sobel edge detection Gx cam1
+    if (activeArea='1') then
+    
+    for I in 639 downto 1 loop
+        shift_reg_2(I) <= shift_reg_2(I-1); 
+    end loop;
+    shift_reg_2(0) <= shift_reg_1(639);
+    for I in 639 downto 1 loop
+        shift_reg_1(I) <= shift_reg_1(I-1); 
+    end loop;
+    shift_reg_1(0) <= shift_reg_0(639);
+    for I in 639 downto 1 loop
+        shift_reg_0(I) <= shift_reg_0(I-1); 
+    end loop;
+    shift_reg_0(0) <= frame_pixel_cam_1;
+    
+    p0 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_0(0)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_0(0)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_0(0)(3 downto 0)))/100),4));
+    p1 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_0(1)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_0(1)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_0(1)(3 downto 0)))/100),4));
+    p2 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_0(2)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_0(2)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_0(2)(3 downto 0)))/100),4));
+    p3 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_1(0)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_1(0)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_1(0)(3 downto 0)))/100),4));
+    p4 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_1(1)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_1(1)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_1(1)(3 downto 0)))/100),4));
+    p5 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_1(2)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_1(2)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_1(2)(3 downto 0)))/100),4));
+    p6 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_2(0)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_2(0)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_2(0)(3 downto 0)))/100),4));
+    p7 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_2(1)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_2(1)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_2(1)(3 downto 0)))/100),4));
+    p8 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_2(2)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_2(2)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_2(2)(3 downto 0)))/100),4));
+
+    f1 <= std_logic_vector(to_signed((to_integer(unsigned(p6)) + 2 * to_integer(unsigned(p7)) + to_integer(unsigned(p8))),6));
+    f2 <= std_logic_vector(to_signed((to_integer(unsigned(p0)) + 2 * to_integer(unsigned(p1)) + to_integer(unsigned(p2))),6));
+    f3 <= std_logic_vector(to_signed((to_integer(unsigned(p2)) + 2 * to_integer(unsigned(p5)) + to_integer(unsigned(p8))),6));
+    f4 <= std_logic_vector(to_signed((to_integer(unsigned(p0)) + 2 * to_integer(unsigned(p3)) + to_integer(unsigned(p6))),6));
+    
+    Gx <= std_logic_vector(abs(signed(f1) - signed(f2)));
+    Gy <= std_logic_vector(abs(signed(f3) - signed(f4)));
+    
+    G <= std_logic_vector(signed(Gx));
+        
+    if (to_integer(signed(G)) > 7) then 
+    sobel_out <= "111111111111";
+    else
+    sobel_out <= "000000000000";
+    end if;  
+    vga_red <= sobel_out(11 downto 8);
+    vga_green <= sobel_out(7 downto 4);
+    vga_blue <= sobel_out(3 downto 0);
+    else
+        vga_red <= "0000"; 
+        vga_green <= "0000"; 
+        vga_blue <= "0000";
+    end if;
+    
+ELSIF (SW = "00100001") THEN -- sobel edge detection Gy cam 1
+        if (activeArea='1') then
+        
+        for I in 639 downto 1 loop
+            shift_reg_2(I) <= shift_reg_2(I-1); 
+        end loop;
+        shift_reg_2(0) <= shift_reg_1(639);
+        for I in 639 downto 1 loop
+            shift_reg_1(I) <= shift_reg_1(I-1); 
+        end loop;
+        shift_reg_1(0) <= shift_reg_0(639);
+        for I in 639 downto 1 loop
+            shift_reg_0(I) <= shift_reg_0(I-1); 
+        end loop;
+        shift_reg_0(0) <= frame_pixel_cam_1;
+        
+        p0 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_0(0)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_0(0)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_0(0)(3 downto 0)))/100),4));
+        p1 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_0(1)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_0(1)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_0(1)(3 downto 0)))/100),4));
+        p2 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_0(2)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_0(2)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_0(2)(3 downto 0)))/100),4));
+        p3 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_1(0)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_1(0)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_1(0)(3 downto 0)))/100),4));
+        p4 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_1(1)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_1(1)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_1(1)(3 downto 0)))/100),4));
+        p5 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_1(2)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_1(2)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_1(2)(3 downto 0)))/100),4));
+        p6 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_2(0)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_2(0)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_2(0)(3 downto 0)))/100),4));
+        p7 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_2(1)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_2(1)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_2(1)(3 downto 0)))/100),4));
+        p8 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_2(2)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_2(2)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_2(2)(3 downto 0)))/100),4));
+    
+        f1 <= std_logic_vector(to_signed((to_integer(unsigned(p6)) + 2 * to_integer(unsigned(p7)) + to_integer(unsigned(p8))),6));
+        f2 <= std_logic_vector(to_signed((to_integer(unsigned(p0)) + 2 * to_integer(unsigned(p1)) + to_integer(unsigned(p2))),6));
+        f3 <= std_logic_vector(to_signed((to_integer(unsigned(p2)) + 2 * to_integer(unsigned(p5)) + to_integer(unsigned(p8))),6));
+        f4 <= std_logic_vector(to_signed((to_integer(unsigned(p0)) + 2 * to_integer(unsigned(p3)) + to_integer(unsigned(p6))),6));
+        
+        Gx <= std_logic_vector(abs(signed(f1) - signed(f2)));
+        Gy <= std_logic_vector(abs(signed(f3) - signed(f4)));
+        
+        G <= std_logic_vector(signed(Gy));
+            
+        if (to_integer(signed(G)) > 7) then 
+        sobel_out <= "111111111111";
+        else
+        sobel_out <= "000000000000";
+        end if;  
+        vga_red <= sobel_out(11 downto 8);
+        vga_green <= sobel_out(7 downto 4);
+        vga_blue <= sobel_out(3 downto 0);
+        else
+            vga_red <= "0000"; 
+            vga_green <= "0000"; 
+            vga_blue <= "0000";
+        end if;
+ELSIF (SW = "01000000") THEN -- sobel edge detection Gx, Gy cam 1
+                if (activeArea='1') then
+                
+                for I in 639 downto 1 loop
+                    shift_reg_2(I) <= shift_reg_2(I-1); 
+                end loop;
+                shift_reg_2(0) <= shift_reg_1(639);
+                for I in 639 downto 1 loop
+                    shift_reg_1(I) <= shift_reg_1(I-1); 
+                end loop;
+                shift_reg_1(0) <= shift_reg_0(639);
+                for I in 639 downto 1 loop
+                    shift_reg_0(I) <= shift_reg_0(I-1); 
+                end loop;
+                shift_reg_0(0) <= frame_pixel_cam_1;
+                
+                p0 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_0(0)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_0(0)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_0(0)(3 downto 0)))/100),4));
+                p1 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_0(1)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_0(1)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_0(1)(3 downto 0)))/100),4));
+                p2 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_0(2)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_0(2)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_0(2)(3 downto 0)))/100),4));
+                p3 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_1(0)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_1(0)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_1(0)(3 downto 0)))/100),4));
+                p4 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_1(1)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_1(1)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_1(1)(3 downto 0)))/100),4));
+                p5 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_1(2)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_1(2)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_1(2)(3 downto 0)))/100),4));
+                p6 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_2(0)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_2(0)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_2(0)(3 downto 0)))/100),4));
+                p7 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_2(1)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_2(1)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_2(1)(3 downto 0)))/100),4));
+                p8 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_2(2)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_2(2)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_2(2)(3 downto 0)))/100),4));
+            
+                f1 <= std_logic_vector(to_signed((to_integer(unsigned(p6)) + 2 * to_integer(unsigned(p7)) + to_integer(unsigned(p8))),6));
+                f2 <= std_logic_vector(to_signed((to_integer(unsigned(p0)) + 2 * to_integer(unsigned(p1)) + to_integer(unsigned(p2))),6));
+                f3 <= std_logic_vector(to_signed((to_integer(unsigned(p2)) + 2 * to_integer(unsigned(p5)) + to_integer(unsigned(p8))),6));
+                f4 <= std_logic_vector(to_signed((to_integer(unsigned(p0)) + 2 * to_integer(unsigned(p3)) + to_integer(unsigned(p6))),6));
+                
+                Gx <= std_logic_vector(abs(signed(f1) - signed(f2)));
+                Gy <= std_logic_vector(abs(signed(f3) - signed(f4)));
+                
+                G <= std_logic_vector(signed(Gx) + signed(Gy));
+                    
+                if (to_integer(signed(G)) > 7) then 
+                sobel_out <= "111111111111";
+                else
+                sobel_out <= "000000000000";
+                end if;  
+                vga_red <= sobel_out(11 downto 8);
+                vga_green <= sobel_out(7 downto 4);
+                vga_blue <= sobel_out(3 downto 0);
+                else
+                    vga_red <= "0000"; 
+                    vga_green <= "0000"; 
+                    vga_blue <= "0000";
+                end if;
+ELSIF (SW = "01000001") THEN -- sobel edge detection Gx, Gy cam 2
+                                if (activeArea='1') then
+                                
+                                for I in 639 downto 1 loop
+                                    shift_reg_2(I) <= shift_reg_2(I-1); 
+                                end loop;
+                                shift_reg_2(0) <= shift_reg_1(639);
+                                for I in 639 downto 1 loop
+                                    shift_reg_1(I) <= shift_reg_1(I-1); 
+                                end loop;
+                                shift_reg_1(0) <= shift_reg_0(639);
+                                for I in 639 downto 1 loop
+                                    shift_reg_0(I) <= shift_reg_0(I-1); 
+                                end loop;
+                                shift_reg_0(0) <= frame_pixel_cam_2;
+                                
+                                p0 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_0(0)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_0(0)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_0(0)(3 downto 0)))/100),4));
+                                p1 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_0(1)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_0(1)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_0(1)(3 downto 0)))/100),4));
+                                p2 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_0(2)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_0(2)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_0(2)(3 downto 0)))/100),4));
+                                p3 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_1(0)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_1(0)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_1(0)(3 downto 0)))/100),4));
+                                p4 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_1(1)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_1(1)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_1(1)(3 downto 0)))/100),4));
+                                p5 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_1(2)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_1(2)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_1(2)(3 downto 0)))/100),4));
+                                p6 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_2(0)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_2(0)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_2(0)(3 downto 0)))/100),4));
+                                p7 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_2(1)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_2(1)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_2(1)(3 downto 0)))/100),4));
+                                p8 <= std_logic_vector(to_unsigned((30 * to_integer(unsigned(shift_reg_2(2)(11 downto 8)))/100) + (59*to_integer(unsigned(shift_reg_2(2)(7 downto 4)))/100) + (11*to_integer(unsigned(shift_reg_2(2)(3 downto 0)))/100),4));
+                            
+                                f1 <= std_logic_vector(to_signed((to_integer(unsigned(p6)) + 2 * to_integer(unsigned(p7)) + to_integer(unsigned(p8))),6));
+                                f2 <= std_logic_vector(to_signed((to_integer(unsigned(p0)) + 2 * to_integer(unsigned(p1)) + to_integer(unsigned(p2))),6));
+                                f3 <= std_logic_vector(to_signed((to_integer(unsigned(p2)) + 2 * to_integer(unsigned(p5)) + to_integer(unsigned(p8))),6));
+                                f4 <= std_logic_vector(to_signed((to_integer(unsigned(p0)) + 2 * to_integer(unsigned(p3)) + to_integer(unsigned(p6))),6));
+                                
+                                Gx <= std_logic_vector(abs(signed(f1) - signed(f2)));
+                                Gy <= std_logic_vector(abs(signed(f3) - signed(f4)));
+                                
+                                G <= std_logic_vector(signed(Gx) + signed(Gy));
+                                    
+                                if (to_integer(signed(G)) > 7) then 
+                                sobel_out <= "111111111111";
+                                else
+                                sobel_out <= "000000000000";
+                                end if;  
+                                vga_red <= sobel_out(11 downto 8);
+                                vga_green <= sobel_out(7 downto 4);
+                                vga_blue <= sobel_out(3 downto 0);
+                                else
+                                    vga_red <= "0000"; 
+                                    vga_green <= "0000"; 
+                                    vga_blue <= "0000";
+                                end if;
+
+ELSIF (SW = "10000000") THEN -- averaging color cam 1
+        if (activeArea='1') then
+        
+        for I in 639 downto 1 loop
+            shift_reg_2(I) <= shift_reg_2(I-1); 
+        end loop;
+        shift_reg_2(0) <= shift_reg_1(639);
+        for I in 639 downto 1 loop
+            shift_reg_1(I) <= shift_reg_1(I-1); 
+        end loop;
+        shift_reg_1(0) <= shift_reg_0(639);
+        for I in 639 downto 1 loop
+            shift_reg_0(I) <= shift_reg_0(I-1); 
+        end loop;
+        shift_reg_0(0) <= frame_pixel_cam_1;
+        
+        vga_red <= std_logic_vector(to_unsigned((
+                                       to_integer(unsigned(shift_reg_0(0)(11 downto 8)))+ 
+                                       to_integer(unsigned(shift_reg_0(1)(11 downto 8)))+
+                                       to_integer(unsigned(shift_reg_0(2)(11 downto 8)))+
+                                       to_integer(unsigned(shift_reg_1(0)(11 downto 8)))+
+                                       to_integer(unsigned(shift_reg_1(1)(11 downto 8)))+
+                                       to_integer(unsigned(shift_reg_1(2)(11 downto 8)))+
+                                       to_integer(unsigned(shift_reg_2(0)(11 downto 8)))+
+                                       to_integer(unsigned(shift_reg_2(1)(11 downto 8)))+
+                                       to_integer(unsigned(shift_reg_2(2)(11 downto 8))))/9, 4));
+    
+         
+        vga_green <= std_logic_vector(to_unsigned((
+                                      to_integer(unsigned(shift_reg_0(0)(7 downto 4)))+ 
+                                      to_integer(unsigned(shift_reg_0(1)(7 downto 4)))+
+                                      to_integer(unsigned(shift_reg_0(2)(7 downto 4)))+
+                                      to_integer(unsigned(shift_reg_1(0)(7 downto 4)))+
+                                      to_integer(unsigned(shift_reg_1(1)(7 downto 4)))+
+                                      to_integer(unsigned(shift_reg_1(2)(7 downto 4)))+
+                                      to_integer(unsigned(shift_reg_2(0)(7 downto 4)))+
+                                      to_integer(unsigned(shift_reg_2(1)(7 downto 4)))+
+                                      to_integer(unsigned(shift_reg_2(2)(7 downto 4))))/9, 4));
+                                      
+        vga_green <= std_logic_vector(to_unsigned((
+                                    to_integer(unsigned(shift_reg_0(0)(3 downto 0)))+ 
+                                    to_integer(unsigned(shift_reg_0(1)(3 downto 0)))+
+                                    to_integer(unsigned(shift_reg_0(2)(3 downto 0)))+
+                                    to_integer(unsigned(shift_reg_1(0)(3 downto 0)))+
+                                    to_integer(unsigned(shift_reg_1(1)(3 downto 0)))+
+                                    to_integer(unsigned(shift_reg_1(2)(3 downto 0)))+
+                                    to_integer(unsigned(shift_reg_2(0)(3 downto 0)))+
+                                    to_integer(unsigned(shift_reg_2(1)(3 downto 0)))+
+                                    to_integer(unsigned(shift_reg_2(2)(3 downto 0))))/9, 4));   
+        else
+            vga_red <= "0000"; 
+            vga_green <= "0000"; 
+            vga_blue <= "0000";
+        end if;
+ELSIF (SW = "10000001") THEN -- inverting cam 1
+        
+                if (activeArea='1') then
+                    vga_red <= not frame_pixel_cam_1(11 downto 8);
+                    vga_green <= not frame_pixel_cam_1(7 downto 4);
+                    vga_blue <= not frame_pixel_cam_1(3 downto 0);
+                else
+                    vga_red <= "0000";
+                    vga_green <= "0000";
+                    vga_blue <= "0000";
+                end if;        
+        
+                
+        ELSIF (SW = "10000000") THEN -- inverting cam 2
+        
+                if (activeArea='1') then
+                    vga_red <= not frame_pixel_cam_2(11 downto 8);
+                    vga_green <= not frame_pixel_cam_2(7 downto 4);
+                    vga_blue <= not frame_pixel_cam_2(3 downto 0);
+                else
+                    vga_red <= "0000";
+                    vga_green <= "0000";
+                    vga_blue <= "0000";
+                end if;  
+
 END IF;
 END IF;
 
