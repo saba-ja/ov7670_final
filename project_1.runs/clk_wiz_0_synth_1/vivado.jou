@@ -1,12 +1,12 @@
 #-----------------------------------------------------------
-# Vivado v2018.2.2 (64-bit)
-# SW Build 2348494 on Mon Oct  1 18:25:39 MDT 2018
-# IP Build 2318053 on Mon Oct  1 21:44:26 MDT 2018
-# Start of session at: Sat Dec  1 14:28:03 2018
-# Process ID: 838
-# Current directory: /home/saba/Documents/workstation4_image_processing/project_1/project_1.runs/clk_wiz_0_synth_1
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:36:41 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Fri Dec 14 13:05:03 2018
+# Process ID: 5843
+# Current directory: /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.runs/clk_wiz_0_synth_1
 # Command line: vivado -log clk_wiz_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source clk_wiz_0.tcl
-# Log file: /home/saba/Documents/workstation4_image_processing/project_1/project_1.runs/clk_wiz_0_synth_1/clk_wiz_0.vds
-# Journal file: /home/saba/Documents/workstation4_image_processing/project_1/project_1.runs/clk_wiz_0_synth_1/vivado.jou
+# Log file: /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.runs/clk_wiz_0_synth_1/clk_wiz_0.vds
+# Journal file: /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.runs/clk_wiz_0_synth_1/vivado.jou
 #-----------------------------------------------------------
 source clk_wiz_0.tcl -notrace

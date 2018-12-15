@@ -1,9 +1,9 @@
 #-----------------------------------------------------------
-# Vivado v2018.2.2 (64-bit)
-# SW Build 2348494 on Mon Oct  1 18:25:39 MDT 2018
-# IP Build 2318053 on Mon Oct  1 21:44:26 MDT 2018
-# Start of session at: Mon Dec 10 03:39:33 2018
-# Process ID: 20716
+# Vivado v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:36:41 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Fri Dec 14 17:37:36 2018
+# Process ID: 29564
 # Current directory: /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.runs/synth_1
 # Command line: vivado -log main_project_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source main_project_top.tcl
 # Log file: /home/saba/Documents/workstation4_image_processing/ov7670_final/ov7670_final/project_1.runs/synth_1/main_project_top.vds
